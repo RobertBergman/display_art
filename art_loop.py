@@ -18,11 +18,12 @@ import requests
 
 KEYFILE = os.path.expanduser("~/.agent/api_keys.json")
 OR_URL = "https://openrouter.ai/api/v1/chat/completions"
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CARD = "/dev/dri/card1"
-DISPLAY_BIN = os.path.join(SCRIPT_DIR, "display_image")
-OUTPUT_IMG = "/tmp/display_art.png"
-IMAGES_DIR = os.path.join(SCRIPT_DIR, "images")
+CARD = os.environ.get("DRM_CARD", "/dev/dri/card1")
+OUTPUT_IMG = os.path.join(os.path.expanduser("~"), "display_art.png")
+IMAGES_DIR = os.path.join(os.path.expanduser("~"), "images")
+INSTALLED_BIN = "/usr/local/bin/display_art_display"
+DEV_BIN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "display_image")
+DISPLAY_BIN = INSTALLED_BIN if os.path.exists(INSTALLED_BIN) else DEV_BIN
 INTERVAL = 7200
 PAUSE_TIMEOUT = 300
 
