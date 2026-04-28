@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+
+# Local compiled binaries
+display_image
+hello_kms
+
+# Generated art
+images/*
+!images/.gitkeep
